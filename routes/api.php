@@ -16,16 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/products',[ProductController::class,'index']);
+// Route::get('/products',[ProductController::class,'index']);
+// Route::post('/products',[ProductController::class,'show']);
 
-// Route::post('/products', function(){
-//    return Product::create([
-//        "name"=>"Product One",
-//        "slug"=>"product-one",
-//        "description"=>"This is product one",
-//        "price"=>'99.99'
-//    ]);
-// });
+Route::resource('products', ProductController::class);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

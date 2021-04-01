@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -25,7 +25,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required",
+            "slug"=>"required",
+            "price"=>"required"
+        ]);  
+
+        return Product::create($request->all());
     }
 
     /**
@@ -36,7 +42,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        Product::find($id);
     }
 
     /**
